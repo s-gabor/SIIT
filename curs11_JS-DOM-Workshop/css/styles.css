@@ -1,0 +1,23 @@
+h1,
+h2 {
+  text-align: center;
+}
+
+body > div {
+  margin: 1% auto 1% auto;
+  padding: 1%;
+  text-align: center;
+  border: solid lightgrey;
+  /* background-color: lightblue; */
+  width: 50%;
+}
+
+section {
+  border: solid lightgrey;
+  margin: 3% 0 3% 0;
+  background-color: lightcyan;
+}
+
+#search {
+  float: right;
+}

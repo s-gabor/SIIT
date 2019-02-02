@@ -1,2 +1,0 @@
-# SIIT
-Created with CodeSandbox

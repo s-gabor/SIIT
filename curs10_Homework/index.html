@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Contact Form - jQuery</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+	</script>
+</head>
+
+<body>
+	<h1>Contact Form - jQuery</h1>
+	Implement a Contact form component.<br>
+		Your form should have:
+		<ul>
+			<li>2 text inputs, 1 radio button,</li>
+			<li>1 text area,</li>
+			<li>1 submit button,</li>
+			<li>optional image on the right, just to make the form look a little better.</li>
+		</ul>
+        Implement the following:
+		<ul>
+			<li>When clicking the "Submit" button, you should validate the required fields , and display a red border around the input if
+			validation fails.</li>
+			<li>If user corrects the error, you should remove the red border.</li>
+            <li>When the form is successfully submitted (no validation errors) you should display a Confirmation banner (which is hidden
+			initially) containing the user's first name that you just collected from the input fields. Also all the info from the input fields should be printed in the Console.</li>
+		</ul>
+		<p id="confBanner" class="center"></p>
+		<form id="contactForm" class="center" onsubmit="return false ">
+			<img id="logo" src="images/1.jpg">
+			<input id="firstName" type="text" name="First Name" placeholder="First Name" required><br>
+            <input id="lastName" type="text" name="Last Name" placeholder="Last Name" required><br>
+			Gender<br>
+			<input type="radio" name="Gender" value="male" id="male"><label for="male">M</label><br>
+			<input type="radio" name="Gender" value="female" id="female"><label for="female">F</label><br>
+            <textarea id="textareaMessage" placeholder="Your message here..." name="Message" required></textarea><br>
+            <input id="submitButton" type="submit" name="submit" value="Submit">
+        </form>
+    </body>
+	<script>
+		 // First Name border validation
+		$("#firstName").on("invalid", function() {
+  			var classes = $("#firstName");
+  			classes.addClass("borderSolidRed");
+		});
+
+		$("#firstName").on("keyup", function() {
+		var classes = $("#firstName");
+		classes.removeClass("borderSolidRed");
+		});
+
+		 // Last Name border validation
+		$("#lastName").on("invalid", function() {
+		var classes = $("#lastName");
+		classes.addClass("borderSolidRed");
+		});
+
+		$("#lastName").on("keyup", function() {
+		var classes = $("#lastName");
+		classes.removeClass("borderSolidRed");
+		});
+
+		 // Textarea border validation
+		$("#textareaMessage").on("invalid", function() {
+		var classes = $("#textareaMessage");
+		classes.addClass("borderSolidRed");
+		});
+
+		$("#textareaMessage").on("keyup", function() {
+		var classes = $("#textareaMessage");
+		classes.removeClass("borderSolidRed");
+		});
+
+		// Confirmation banner, logo change and console log
+		$('#confBanner').hide();
+		$("#contactForm").on("submit", function() {
+			$("#confBanner").show();
+			 $("#confBanner").html("Thank you for contacting us, " + $("#firstName").val() + "!");
+			$("#logo").attr({"src": "images/2.jpg"});
+			logData();
+			console.log("Logo: changed");
+		})
+
+		function logData() {
+			var inputFields = ["firstName", "lastName", "textareaMessage"];
+			for (var i = 0; i < inputFields.length; i++) {
+				var data = $("#" + inputFields[i]).attr("name") + ": " + $("#" + inputFields[i]).val();
+				console.log(data);
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,18 @@
+body {
+  font-family: sans-serif;
+}
+
+#filters {
+  width: 25%;
+  float: left;
+  padding: 5px;
+}
+
+#main {
+  width: 75%;
+  float: right;
+  padding: 5px;
+}
+
+#filters input[type="checkbox"] {
+}
